@@ -4,9 +4,16 @@ export class Dish
     name!:string;
     image!:string;
     category!:string;
-    feature!:string;
-    lable!:string;
+    feature!:boolean;
+    label!:string;
     price!:string;
     description!:string;
-    comments: any[] | undefined;
+    comments!: Comment[];
+}
+
+export class Comment {
+    rating!: number;
+    comment!: string;
+    author!: string;
+    date!: string;
 }
