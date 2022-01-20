@@ -12,4 +12,16 @@ export class DishService {
   {
     return DISHES;
   }
+
+  public getDishe(id:string):Dish
+  {
+  //  return DISHES.filter(g=>g.id==id)[0];
+  return DISHES.filter((dish)=>{dish.id==id})[0];
+  }
+
+  public getFeaturedDish():Dish
+  {
+    debugger;
+return DISHES.filter(g=>g.feature)[0];
+  }
 }
