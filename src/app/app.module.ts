@@ -7,13 +7,21 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list'
 import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
-import { MenuComponent } from './menu/menu.component';
 
-import { DishdetailComponent } from './dishdetail/dishdetail.component'
+import {MatDialogModule } from '@angular/material/dialog'
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms'; 
 
+
+
+
+import { MenuComponent } from './menu/menu.component';
+import { DishdetailComponent } from './dishdetail/dishdetail.component'
 import { HeaderComponent } from './Shared/header/header.component';
 import { FooterComponent } from './Shared/footer/footer.component';
 import { HomeComponent } from './home/home.component';
@@ -22,6 +30,7 @@ import { ContactComponent } from './contact/contact.component';
 import { DishService } from './Services/dish.service';
 import { PromotionService } from './Services/promotion.service';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +41,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     FooterComponent,
     HomeComponent,
     ContactComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -40,10 +50,18 @@ import { AboutUsComponent } from './about-us/about-us.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     FlexLayoutModule,
+    MatDialogModule,
     MatListModule,
     MatGridListModule,
     MatCardModule,
     MatButtonModule,
+    MatFormFieldModule, 
+    MatInputModule,
+    MatCheckboxModule,
+    FormsModule
+  ],
+  entryComponents:[
+LoginComponent    
   ],
   providers: [DishService,PromotionService],
   bootstrap: [AppComponent]
