@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
     CorporateLeader!:CorporateLeader;
   ngOnInit(): void 
   {
-    debugger;
 this.dish=this.dishservice.getFeaturedDish();
 this.promotion=this.Promotionservice.getFeaturedpromotion();
 this.CorporateLeader=this.corporateleaderService.getFeaturedCorporateLeader();

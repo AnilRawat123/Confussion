@@ -21,7 +21,6 @@ export class DishService {
 
   public getFeaturedDish():Dish
   {
-    debugger;
 return DISHES.filter(g=>g.feature)[0];
   }
 }

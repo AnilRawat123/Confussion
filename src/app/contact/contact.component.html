@@ -6,6 +6,53 @@
     <div>
         <h3>Contact Us</h3>
         <hr>
+
+        <div>
+          {{feedbackForm.value|json}}
+          {{feedbackForm.status|json}}
+        </div>
+        <form novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+          <p>
+            <mat-form-field class="half-width">
+              <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
+              <mat-error *ngIf="f.firstname.errors?.required && f.firstname.touched">First name is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="half-width">
+              <input matInput formControlName="lastname" placeholder="Last Name" type="text" required>
+              <mat-error *ngIf="f.lastname.errors?.required && f.lastname.touched">Last name is required</mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field class="half-width">
+              <input matInput formControlName="telnum" placeholder="Tel. Number" type="tel" required>
+              <mat-error *ngIf="f.telnum.errors?.required && f.telnum.touched">Tel. number is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="half-width">
+              <input matInput formControlName="email" placeholder="Email" type="email" required>
+              <mat-error *ngIf="f.email.errors?.required && f.email.touched">Email ID is required</mat-error>
+            </mat-form-field>
+          </p>
+          <table class="form-size">
+            <td>
+              <mat-slide-toggle formControlName="agree">May we contact you?</mat-slide-toggle>
+            </td>
+            <td>
+              <mat-select placeholder="How?" formControlName="contacttype">
+                <mat-option *ngFor="let ctype of contactType" [value]="ctype">
+                  {{ ctype }}
+                </mat-option>
+              </mat-select>
+            </td>
+            </table>
+          <p>
+            <mat-form-field class="full-width">
+              <textarea matInput formControlName="message" placeholder="Your Feedback" rows=12></textarea>
+            </mat-form-field>
+          </p>
+          <button type="submit" [disabled]="feedbackForm.invalid" mat-button class="background-primary text-floral-white">Submit</button>
+        </form>
+      </div>
+
     </div>
   </div>
 
@@ -35,4 +82,3 @@
       </div>
     </div>
   </div>
-</div>
