@@ -14,10 +14,19 @@ export class PromotionService {
   }
 
   getpromotion(id:string):Promise<Promotion>{
-    return Promise.resolve(Promotions.filter((promo)=>{promo.id==id})[0]);
+    return new Promise((resolve,reject)=>{
+setTimeout(() => {
+  resolve(Promotions.filter((promo)=>{promo.id==id})[0]);
+}, 2000);
+
+    });
   }
 
   getFeaturedpromotion():Promise<Promotion>{
-    return Promise.resolve(Promotions.filter(g=>g.featured)[0]);
+    return new Promise((resolve,reject)=>{
+      setTimeout(() => {
+        resolve(Promotions.filter(g=>g.featured)[0])
+      }, 2000);
+    });
   }
 }
