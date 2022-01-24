@@ -4,17 +4,18 @@ import { CorporateLeader } from '../Models/CorporateLeader';
 @Injectable({
   providedIn: 'root'
 })
-export class CorporateLeaderService {
+export class CorporateLeaderService 
+{
   CorporateLeaderslist:CorporateLeader[]=CorporateLeaders;
   constructor() { }
 
-getCorporateLeaders():CorporateLeader[]
+getCorporateLeaders():Promise<CorporateLeader[]>
 {
-  return this.CorporateLeaderslist;
+  return Promise.resolve(this.CorporateLeaderslist);
 }
-getFeaturedCorporateLeader():CorporateLeader
+getFeaturedCorporateLeader():Promise<CorporateLeader>
 {
-  return this.CorporateLeaderslist.filter(g=>g.featured)[0];
+  return  Promise.resolve(this.CorporateLeaderslist.filter(g=>g.featured)[0]);
 }
 
 
