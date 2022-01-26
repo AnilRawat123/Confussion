@@ -13,7 +13,7 @@ export class AboutUsComponent implements OnInit {
   CorporateLeaders!:CorporateLeader[];
   ngOnInit(): void 
   {
-      this.corporateLeaderService.getCorporateLeaders().then(res=>this.CorporateLeaders=res);
+      this.corporateLeaderService.getCorporateLeaders().subscribe(res=>this.CorporateLeaders=res);
   }
 
 }
