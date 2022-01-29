@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +38,8 @@ import { PromotionService } from './Services/promotion.service';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { LoginComponent } from './login/login.component';
 
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +56,7 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatProgressSpinnerModule,
     FormsModule,
     ReactiveFormsModule,
@@ -74,7 +78,8 @@ import { LoginComponent } from './login/login.component';
   entryComponents:[
 LoginComponent    
   ],
-  providers: [DishService,PromotionService],
+  providers: [DishService,PromotionService, 
+    {provide: 'BaseURL', useValue: environment.baseURL}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

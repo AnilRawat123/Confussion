@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 
 import { PromotionService } from '../Services/promotion.service';
 import { Promotion } from '../Models/Promotion';
@@ -16,7 +16,8 @@ import { CorporateLeaderService } from '../Services/corporate-leader.service';
 export class HomeComponent implements OnInit {
 
   constructor(private Promotionservice:PromotionService,
-    private dishservice:DishService,private corporateleaderService:CorporateLeaderService) { }
+    private dishservice:DishService,private corporateleaderService:CorporateLeaderService,
+    @Inject('BaseURL') public baseURL: string) { }
 
 
     dish!:Dish;
