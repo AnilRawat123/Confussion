@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import { CorporateLeaderService } from '../Services/corporate-leader.service';
 import { CorporateLeader } from '../Models/CorporateLeader';
 
@@ -8,7 +8,9 @@ import { CorporateLeader } from '../Models/CorporateLeader';
   styleUrls: ['./about-us.component.css']
 })
 export class AboutUsComponent implements OnInit {
-  constructor(private corporateLeaderService:CorporateLeaderService) { }
+  constructor(private corporateLeaderService:CorporateLeaderService,
+    @Inject('BaseURL') public baseURL: string
+    ) { }
 
   CorporateLeaders!:CorporateLeader[];
   ngOnInit(): void 

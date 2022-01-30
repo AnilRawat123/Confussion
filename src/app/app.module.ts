@@ -39,6 +39,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { LoginComponent } from './login/login.component';
 
 import { environment } from '../environments/environment';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { environment } from '../environments/environment';
     HomeComponent,
     ContactComponent,
     AboutUsComponent,
-    LoginComponent
+    LoginComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,

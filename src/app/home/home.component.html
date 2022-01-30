@@ -47,7 +47,7 @@
       <h3>{{CorporateLeader.name | uppercase}}</h3>
     </mat-card-title>
   </mat-card-header>
-  <img mat-card-image style="width: 500px; height: 500px;" src={{CorporateLeader.image}} alt={{CorporateLeader.name}}>
+  <img mat-card-image style="width: 500px; height: 500px;" src="{{baseURL + CorporateLeader.image}}" alt={{CorporateLeader.name}}>
   <mat-card-content>
     <p>{{CorporateLeader.designation}}</p>
     <p>{{CorporateLeader.description}}

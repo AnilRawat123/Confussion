@@ -59,7 +59,7 @@
 
   <div class="row"  fxFlex *ngFor="let leader of CorporateLeaders">
     <div class="col-md-2">
-      <img src="{{leader.image}}" />
+      <img src="{{baseURL+leader.image}}" />
     </div>
     <div class="col-md-10">
       <p>{{leader.name +' '+ leader.abbr }} </p>

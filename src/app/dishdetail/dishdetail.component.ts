@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit ,Input,Inject} from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { Comment, Dish } from '../Shared/dish';
@@ -14,7 +14,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class DishdetailComponent implements OnInit {
   CommentForm!:FormGroup;
-
+  errMess!:string;
   formErrors:any = {
     'author': '',
     'comment': '',
@@ -34,11 +34,17 @@ export class DishdetailComponent implements OnInit {
   };
 
 
-    dish!:Dish;
+    dish: Dish |null|undefined;
     dishIds!: string[];
     prev!: string;
   next!: string;
-  constructor(private fb:FormBuilder,private dishservice:DishService,private location:Location,private route:ActivatedRoute) 
+  dishcopy: Dish|null|undefined;
+  constructor(private fb:FormBuilder,
+    private dishservice:DishService,
+    private location:Location,
+    private route:ActivatedRoute,
+    @Inject('BaseURL') public baseURL: string
+    ) 
   {
     this.createForm();
 
@@ -48,7 +54,7 @@ export class DishdetailComponent implements OnInit {
      //this.dishservice.getDish(Id).subscribe(res=>this.dish=res);
      this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
      this.route.params.pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
-     .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); });
+     .subscribe(dish => { this.dish = dish; this.dishcopy=dish,  this.setPrevNext(dish.id); });
   }
 
   setPrevNext(dishId: string) 
@@ -112,7 +118,16 @@ var CommentAdd:Comment={
   author!: Comment_.author,
   date!: new Date().toDateString(),
 }
-  this.dish.comments.push(CommentAdd);
+  this.dishcopy?.comments.push(CommentAdd);
+ // this.dishservice.putDish(this.dishcopy);
+  this.dishservice.putDish(this.dishcopy)
+  .subscribe(dish => {
+    this.dish = dish; this.dishcopy = dish;
+  },
+  errmess => { 
+    this.dish=null;this.dishcopy=null
+    this.errMess = <any>errmess; });
+
   this.CommentForm.reset({
       author: '',
       comment: '',
@@ -124,3 +139,5 @@ var CommentAdd:Comment={
 
 
 }
+
+
